@@ -99,4 +99,9 @@ to all elements in there.
 Now adding a number to the name's hashCode will make it different. ANy number that doesn't risk overflowing
 an integer will do. We'll use 57. This will guarantee that we have a non-zero number as hashCode.
 
-NOTE: the same fields used in equals() should be used in hashCode()
+NOTE: the same fields used in equals() should be used in hashCode().
+
+We need to be extra careful when overriding equals in a class and deciding if we're going to allow sub-classing
+for that class. Making equals final would also help to make sure in certain scenarios that the right criteria 
+are applied. As well as making the class final, and use composition instead of inheritance. And always remember
+that equals has a certain conditions to fulfill.
