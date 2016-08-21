@@ -28,7 +28,54 @@ uses compressed pointers that can even end up using less space than 32 bit int. 
 
 https://docs.oracle.com/javase/8/docs/technotes/guides/vm/performance-enhancements-7.html
 
+NOTE : Java doc warn us that when using out own objects as keys in a map or as elements in a set,
+we should override the equals() and hashCode() methods. Otherwise it will be used the simple
+referential equality of Object.equals() (equivalent to using "==") which most probably won't apply to our classes causing
+weird and undesired behaviors in our data structures. 
+
+NOTE : if to object compare equals then their hashCode must be equal as well, so we should override
+hashCode() as well when we override equals.
+
+IMPORTANT NOTE ABOUT HASHCODES:=============================================================================
+The contract is explained in the hashCode method’s JavaDoc. It can be roughly summarized with this statement:
+
+Objects that are equal must have the same hash code within a running process
+
+Please note that this does not imply the following common misconceptions:
+
+    - Unequal objects must have different hash codes – WRONG!
+    - Objects with the same hash code must be equal – WRONG!
+    
+Please see picture attached : when storing collections in a hashed collection such as HashSets or HashMap,
+we can imagine that the collections have a number of buckets to store the objects in. The hashCode determines
+which bucket and object is going to go into. Now, it's a requirement that any objects that are equal should 
+have the same hashCode and ultimately will go into the same bucket, but the opposite is not true, 
+two object with the same hashCode should not necessarily be equal. 
+
+When we generate an object its hash code tells the collection which bucket it should go into, but it may
+already be objects in that bucket so each is compared (using equals) to the new object to make sure that
+is not already in there. Giving that the comparison is performed using equals(), the collection will only
+know if it's already there if it's looking into the right bucket. So the hashCode should be the same. 
+
+There's no point for equals returning true if the collection is checking the wrong bucket (if the hash code 
+for the new object is not the same as an object that it's equal to).
+
+A bad scenario example (following the picture) : if we try to add another object that is equal to Object6, 
+then the hashCode will indicate that bucket2 should be the one to check. So all the objects already in 
+bucket2 will be compared (using equals()) to the new object, so the new object won't be added to the collection.
+Because duplicates shouldn't be allowed. 
+
+On the contrary if the new object breaks the rule and has a different hashCode to Object6, although
+equals would evaluate true, the collection would be looking in the wrong bucket and won't find the objects
+it should be comparing to. Implying that a duplicate object will be added to the collection. An even worse
+scenario could happen : because of having duplicates elements in a HashCollection when trying to remove one
+we could get first to the one different that the actual one we wanted to delete (all duplicates would
+evaluate true with equals) causing undesired behaviors.  
 
 
- 
+NOTE: if we don't use 
+@Override
+
+We risk that our method will overload and not override the base class method, it'll never be used, 
+besides @Override also helps to check if the method's signature is right
 
