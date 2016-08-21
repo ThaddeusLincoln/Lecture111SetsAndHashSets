@@ -116,3 +116,19 @@ Bulk operations are particularly well suited to Sets; when applied, they perform
     s1.retainAll(s2) — transforms s1 into the intersection of s1 and s2. (The intersection of two sets is the set containing only the elements common to both sets.)
     s1.removeAll(s2) — transforms s1 into the (asymmetric) set difference of s1 and s2. (For example, the set difference of s1 minus s2 is the set containing all of the elements found in s1 but not in s2.)
 
+Nearly all the collection classes have constructors that use another collection's items to populate the new one. 
+
+NOTE: Bulk operations are destructive, meaning that the actually modify the set they are called upon.
+
+SYMETRIC & ASYMETRIC ===============================================================================================
+
+In Set theory 2 differences are defined: Symetric and Asymetric difference. 
+
+1. Asymmetric difference is allowed by using the removeAll() bulk operation, which removes all elements from one set 
+in another. 
+
+NOTE : The collections interface suggests that all class that implement collection should 2 stand constructors, 
+the first one should take no arguments to create an empty collection and the other will take another
+collection's items to initialize the current one. 
+ 
+ We can convert an arrays into a list with the method Arrays.asList().
