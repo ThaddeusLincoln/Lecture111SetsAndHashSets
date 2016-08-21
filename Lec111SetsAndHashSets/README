@@ -122,7 +122,7 @@ NOTE: Bulk operations are destructive, meaning that the actually modify the set 
 
 SYMETRIC & ASYMETRIC ===============================================================================================
 
-In Set theory 2 differences are defined: Symetric and Asymetric difference. 
+In Set theory 2 differences are defined: Symmetric and Asymmetric difference. 
 
 1. Asymmetric difference is allowed by using the removeAll() bulk operation, which removes all elements from one set 
 in another. 
@@ -132,3 +132,16 @@ the first one should take no arguments to create an empty collection and the oth
 collection's items to initialize the current one. 
  
  We can convert an arrays into a list with the method Arrays.asList().
+ 
+ Asymmetric difference: means set1 takes set2, which is not the same as set2 takes set1.
+ 
+ NOTE : Java doesn't have a method for calculating the symmetric difference. Although we can obtain it
+ but subtracting the intersection from the union. 
+ 
+ containsAll() is used to determine if one set is a super set of another, this method is a non-destructive
+ operation. 
+ 
+ 
+ 
+ 
+  
