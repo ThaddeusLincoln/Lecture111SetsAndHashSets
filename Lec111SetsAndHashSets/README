@@ -141,6 +141,14 @@ collection's items to initialize the current one.
  containsAll() is used to determine if one set is a super set of another, this method is a non-destructive
  operation. 
  
+ NOTE : a serious advantage when using using in a constructor an Enum instead of an integer constant
+ is that we'll get the error at compile time, not at runtime, also a nested Enum is automatically static.
+ So it's possible to refer to them without creating an instance of the object that contains them. 
+ 
+ Note: in order to avoid equals not being symmetric (in classes that will likely be sub-classed) 
+ making equals final is a good idea.
+ 
+ 
  
  
  
