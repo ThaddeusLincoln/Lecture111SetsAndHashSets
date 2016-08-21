@@ -79,3 +79,24 @@ NOTE: if we don't use
 We risk that our method will overload and not override the base class method, it'll never be used, 
 besides @Override also helps to check if the method's signature is right
 
+Technique for generating getEquals() ===============================================================
+
+1. Check that the object is not equal to itself
+2. Check that both objects are of the same class
+3. It would be useful to use inside it the equals of a class implemented by Java like String
+
+Technique for generating hashCode() ===============================================================
+
+How to generate hashCode is pretty much up to the developer, as long as same objects always return the
+same hashCode during any execution of our program and also as all object that compared equals have 
+the same hash code. 
+
+Some people says just return 0, but this will make us lose the performance benefits of Hash collections
+because all object will be stored in the same bucket. The performance will drop to that of linkedList or
+a similar structure, because obviously once the single bucket is located the the new object will be compared
+to all elements in there. 
+
+Now adding a number to the name's hashCode will make it different. ANy number that doesn't risk overflowing
+an integer will do. We'll use 57. This will guarantee that we have a non-zero number as hashCode.
+
+NOTE: the same fields used in equals() should be used in hashCode()
