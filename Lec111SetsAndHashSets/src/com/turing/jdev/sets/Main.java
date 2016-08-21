@@ -10,7 +10,7 @@ public class Main {
     private static Set<HeavenlyBody> planets = new HashSet<>();
 
     public static void main(String[] args) {
-        HeavenlyBody temp = new HeavenlyBody("Mercury", 88);
+       /* HeavenlyBody temp = new HeavenlyBody("Mercury", 88);
         solarSystem.put(temp.getName(), temp);
         planets.add(temp);
 
@@ -104,7 +104,7 @@ public class Main {
 
         Object o = new Object();
         o.equals(o);
-        "pluto".equals("");
+        "pluto".equals("");*/
 
 
 
