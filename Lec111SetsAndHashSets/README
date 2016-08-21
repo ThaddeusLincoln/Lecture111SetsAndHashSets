@@ -105,3 +105,14 @@ We need to be extra careful when overriding equals in a class and deciding if we
 for that class. Making equals final would also help to make sure in certain scenarios that the right criteria 
 are applied. As well as making the class final, and use composition instead of inheritance. And always remember
 that equals has a certain conditions to fulfill.
+
+Set Interface Bulk Operations ======================================================================================
+https://docs.oracle.com/javase/tutorial/collections/interfaces/set.html
+
+Bulk operations are particularly well suited to Sets; when applied, they perform standard set-algebraic operations. Suppose s1 and s2 are sets. Here's what bulk operations do:
+
+    s1.containsAll(s2) — returns true if s2 is a subset of s1. (s2 is a subset of s1 if set s1 contains all of the elements in s2.)
+    s1.addAll(s2) — transforms s1 into the union of s1 and s2. (The union of two sets is the set containing all of the elements contained in either set.)
+    s1.retainAll(s2) — transforms s1 into the intersection of s1 and s2. (The intersection of two sets is the set containing only the elements common to both sets.)
+    s1.removeAll(s2) — transforms s1 into the (asymmetric) set difference of s1 and s2. (For example, the set difference of s1 minus s2 is the set containing all of the elements found in s1 but not in s2.)
+
